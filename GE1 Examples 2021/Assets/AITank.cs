@@ -65,12 +65,14 @@ public class AITank : MonoBehaviour
         // Use three different way to rotate tank: Rotate(), LookAt(), forward
         //Rotate();
         transform.position = Vector3.MoveTowards(transform.position, waypoints[current], speed * Time.deltaTime);
+
         if (Vector3.Distance(transform.position, waypoints[current]) <= 0.1f)
         {
             current++;
             if (current >= waypoints.Count)
             {
-                this.enabled = false;
+                //this.enabled = false;
+                current = 0;
                 return;
             }
             targetDir = waypoints[current] - transform.position;
